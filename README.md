@@ -20,7 +20,7 @@ The evaluation is automated using [Promptfoo](https://promptfoo.dev/), allowing 
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/Om22210564/LLM-Based-Input-Validation
    cd LLM-Based_Input_Validator
    ```
    
