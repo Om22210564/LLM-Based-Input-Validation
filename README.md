@@ -100,7 +100,7 @@ View results
 npx promptfoo view
 ```
 
-![Output image](Image.png)
+![Output image](image.png)
 
 ## References
 
