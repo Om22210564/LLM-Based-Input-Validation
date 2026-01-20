@@ -6,6 +6,20 @@ The evaluation is automated using [Promptfoo](https://promptfoo.dev/), allowing 
 
 ---
 
+## Repository Structure
+
+```text
+├── main.py                 # Core Python script for LLM-based input validation
+├── input1.json             # Sample invalid / edge-case input data
+├── input2.json             # Sample valid input data for testing
+├── promptfooconfig.yaml    # Promptfoo evaluation configuration file
+├── requirements.txt        # Python dependencies required to run the project
+├── image.png               # Screenshot demonstrating output of promptfoo interface
+├── .env                    # Environment variables (GROQ API key)*
+├── .gitignore              # Git ignore rules for sensitive and unnecessary files
+└── README.md               # Project documentation
+```
+
 ## Features
 
 - **Strict Validation:** Checks mandatory fields for correctness.  
@@ -85,6 +99,7 @@ View results
 npx promptfoo view
 ```
 
+![Output image](Image.png)
 
 ## References
 
