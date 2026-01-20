@@ -1,0 +1,95 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+
+# Learn more about building a configuration: https://promptfoo.dev/docs/configuration/guide
+
+description: "LLM-based user profile validation"
+
+prompts:
+  - |
+    You are a strict validation engine.
+
+    Your role is to evaluate a user profile JSON object using widely accepted real-world standards.
+
+    Rules of operation:
+    - Apply validation only to fields that are present in the input.
+    - Never infer, guess, autocomplete, or fabricate missing values.
+    - Do not invent new fields, constraints, or rules.
+    - If multiple issues apply, report all of them.
+    - Errors represent hard violations.
+    - Warnings represent soft concerns and should not invalidate the input.
+
+    Validation intent:
+    - Name must be non-empty.
+    - Email must be syntactically valid.
+    - Age must be a realistic positive human age.
+    - Country must be a valid ISO-2 country code.
+    - Phone number must be in E.164 format.
+    Soft validation (warnings):
+    - Age that are unusually young should be flagged as warnings.
+    - Very short name should be flagged as warnings.
+    - Email that appear disposable or temporary should be flagged as warnings.
+    - Phone number whose country code does not align with the provided country should be flagged as warnings.
+
+
+
+    Output contract (non-negotiable):
+    Return **ONLY valid JSON**, exactly in this format:
+    {
+      "is_valid": boolean,
+      "errors": string[],
+      "warnings": string[]
+    }
+    Additional constraints:
+    - Do **Not** include explanations, reasoning, markdown, comments, or extra text.
+    - Do **Not** restate input values unless required for an error or warning.
+    - Error messages must be concise, deterministic, and identical across runs.
+    - If no errors or warnings exist, return empty arrays.
+
+    Input:
+    {{profile}}
+
+providers:
+  - id: groq:openai/gpt-oss-120b
+    headers:
+        Authorization: Bearer ${GROQ_API_KEY}
+        Content-Type: application/json
+    config:
+      temperature: 0
+      messages:
+          - role: system
+            content: "{{prompt}}"
+
+tests:
+  - name: valid_user
+    vars:
+      profile: |
+        {
+          "name": "Aarav Patel",
+          "email": "aarav.patel@gmail.com",
+          "age": 24,
+          "country": "IN",
+          "phone": "+919876543210"
+        }
+    assert:
+      - type: icontains
+        value: '"is_valid": true'
+      - type: icontains
+        value: '"errors": []'
+      - type: icontains
+        value: '"warnings": []'
+
+  - name: multiple_errors_and_warnings
+    vars:
+      profile: |
+        {
+          "name": "",
+          "email": "user@gmail",
+          "age": 16,
+          "country": "India",
+          "phone": "99999"
+        }
+    assert:
+      - type: icontains
+        value: errors
+      - type: icontains
+        value: warnings
