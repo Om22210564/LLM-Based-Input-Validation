@@ -46,9 +46,10 @@ The evaluation is automated using [Promptfoo](https://promptfoo.dev/), allowing 
    pip install -r requirements.txt
    ```
 
-3. **Install Promptfoo globally**
+3. **Install Promptfoo**
    ```bash
-   npm install -g promptfoo
+   npx promptfoo@latest
+   npx promptfoo@latest init
    ```
 
 4. **Set your GROQ API key using a `.env` file**
