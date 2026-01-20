@@ -37,7 +37,7 @@ The evaluation is automated using [Promptfoo](https://promptfoo.dev/), allowing 
    npm install -g promptfoo
    ```
 
-4.  **Set your GROQ API key using a `.env` file**
+4. **Set your GROQ API key using a `.env` file**
    ```bash
    GROQ_API_KEY="your_api_key_here"     
    ```
@@ -47,7 +47,7 @@ The evaluation is automated using [Promptfoo](https://promptfoo.dev/), allowing 
 
 The main.py script validates a JSON file and outputs the LLM-validated result.
 ```bash
-python main.py input1.json
+python main.py input2.json
 ```
 This command will evaluate all test cases defined in the tests section of promptfooconfig.yaml.
 
