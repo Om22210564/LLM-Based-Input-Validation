@@ -35,24 +35,30 @@ The evaluation is automated using [Promptfoo](https://promptfoo.dev/), allowing 
 1. **Clone the repository**
    ```bash
    git clone https://github.com/Om22210564/LLM-Based-Input-Validation
-   cd LLM-Based_Input_Validator
+   cd LLM-Based-Input-Validation
    ```
    
 2. **Install Python dependencies**
+   For windows
    ```bash
-   python -m venv venv          # optional but recommended
-   source venv/bin/activate     # Linux/macOS
+   python -m venv venv          
    venv\Scripts\activate        # Windows
    pip install -r requirements.txt
    ```
+   For linux
+   ```bash
+   python3 -m venv venv 
+   source venv/bin/activate     # Linux/macOS
+   pip install -r requirements.txt
+   ```
 
-3. **Install Promptfoo**
+4. **Install Promptfoo**
    ```bash
    npx promptfoo@latest
    npx promptfoo@latest init
    ```
 
-4. **Set your GROQ API key using a `.env` file**
+5. **Set your GROQ API key using a `.env` file**
    ```bash
    GROQ_API_KEY="your_api_key_here"     
    ```
