@@ -68,7 +68,8 @@ The evaluation is automated using [Promptfoo](https://promptfoo.dev/), allowing 
 
 The main.py script validates a JSON file and outputs the LLM-validated result.
 ```bash
-python main.py input2.json
+python main.py input2.json #Windows
+python3 main.py input2.json #Linux/MacOS
 ```
 This command will evaluate all test cases defined in the tests section of promptfooconfig.yaml.
 
