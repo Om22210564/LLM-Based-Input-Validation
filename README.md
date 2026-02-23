@@ -55,7 +55,6 @@ The evaluation is automated using [Promptfoo](https://promptfoo.dev/), allowing 
 4. **Install Promptfoo**
    ```bash
    npx promptfoo@latest
-   npx promptfoo@latest init
    ```
 
 5. **Set your GROQ API key using a `.env` file**
