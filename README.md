@@ -41,7 +41,7 @@ The evaluation is automated using [Promptfoo](https://promptfoo.dev/), allowing 
 2. **Install Python dependencies**
    For windows
    ```bash
-   python -m venv venv          
+   python -m venv venv          # windows
    venv\Scripts\activate        # Windows
    pip install -r requirements.txt
    ```
